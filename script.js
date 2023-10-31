@@ -19,10 +19,58 @@ const addTask = () => {
         return;
     }
 
-    const task = '<div class="task> <input type="checkbox" class="task-check">\n    <span class="taskname">${taskName}</span>\n   <button class="edit"> <i class="fa-solid fa-pen-to-square"></i> </button>\n   <button class="delete"> <i class="fa-solid fa-delete-left"></i> </button>\n </div>';
-    tasksContainer.insertAdjacentHTML
-    ("beforeend", task);
+    const task = `<div class="task> 
+        <input type="checkbox" class="task-check">
+        <span class="taskname">${taskName}</span>   
+        <button class="edit"> <i class="fa-solid fa-pen-to-square"></i>
+        </button>   
+        <button class="delete"> 
+        <i class="fa-solid fa-delete-left"></i> 
+        </button> 
+    </div>`;
 
+    tasksContainer.insertAdjacentHTML("beforeend", task);
+
+    const deleteButtons = document.querySelectorAll(".delete");
+    deleteButtons.forEach(button => {
+        button.onclick = () => {
+            button.parentNode.remove();
+            taskCount -= 1;
+            displayCount(taskCount);
+        };
+    })
+
+    const editButtons = document.querySelectorAll(".edit");
+    editButtons.forEach((editBtn) => {
+        editBtn.onclick = (e) => {
+            let targetElement = e.target;
+            if(!(e.target.className == "edit")){
+                targetElement = e.target.parentElement;
+            }
+            newTaskInput.value = targetElement.previousElementSibling?.innerText;
+            targetElement.parentNode.remove();
+            taskCount -= 1;
+            displayCount(taskCount);
+
+        };
+    });
+
+    const tasksCheck = document.querySelectorAll(".task-check");
+    tasksCheck.forEach((checkBox) => {
+        checkBox.addEventListener("change", () => {
+            checkBox.nextElementSibling.classList.toggle("completed");
+            if(checkBox.checked){
+                taskCount -= 1;
+            }
+            else{
+                taskCount += 1;
+            }
+            displayCount(taskCount);
+        });
+    });
+    taskCount += 1;
+    displayCount(taskCount);
+    newTaskInput.value = "";
 };
 
 addBtn.addEventListener("click", addTask);
