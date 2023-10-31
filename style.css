@@ -1,12 +1,17 @@
+/* Aplica un reseteo universal para eliminar paddings y margins de todos los elementos y usar un border-box para el tamaño de las cajas*/
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
+
+/* Da estilo al elemento de body, con  */
 body{
     height: 100vh;
-    background: linear-gradient(#ffd55c 50%, #5a95ff 50%);
+    background: #393e46;
 }
+
+/* Estilo para el contenedor de la aplicacion principal*/
 .app {
     font-family: "Poppins", sans-serif;
     width: min(95vw, 500px);
@@ -16,12 +21,16 @@ body{
     right: 0;
     top: 1.875em;
 }
+
+/* Estilo para el contenedor de los inputs y ell boton de agregar tarea*/
 .container{
     padding: 2em 2.5em;
     background-color: #f1f8fb;
     box-shadow: 0 1em 2em rgba(0, 0, 0, 0.3);
     border-radius: 0.8em;
 }
+
+/* Estilo para el wrapper que contiene el campo de input y el boton */
 #wrapper{
     position: relative;
     display: grid;
@@ -29,6 +38,7 @@ body{
     gap: 1em;
 }
 
+/* Estilo para el elemento de input dentro del wrapper*/
 #wrapper input{
     width: 100%;
     background-color: transparent;
@@ -38,10 +48,14 @@ body{
     border-bottom: 2px solid #d1d3d4;
     padding: 1em 0.5em;
 }
+
+/* Estilo para el input del elemento cuando es seleccionado */
 #wrapper input:focus{
     outline: none;
     border-color: #5a95ff;
 }
+
+/* Estilo para el boton dentro del wrapper */
 #wrapper button{
     position: relative;
     border-radius: 0.5em;
@@ -54,6 +68,7 @@ body{
     cursor: pointer;
 }
 
+/* Estilo para los contenedores de las tareas*/
 #tasks{
     margin-top: 1em;
     border-radius: 0.5em;
@@ -62,6 +77,7 @@ body{
     padding: 1em 0.5em;
 }
 
+/* Estilo para cada item de la tarea*/
 .task{
     background-color: #ffffff;
     padding: 0.8em 1em;
@@ -74,9 +90,12 @@ body{
     cursor: pointer;
 }
 
+/* Estilo para todas las tareas excepto la primera con top margin*/
 .task:not(:first-child){
     margin-top: 1em;
 }
+
+/* Estilo de las checkboxes dentro de las tareas*/
 .task input[type="checkbox"]{
     position: relative;
     appearance: none;
@@ -85,6 +104,8 @@ body{
     border-radius: 50%;
     border: 2px solid #e1e1e1;
 }
+
+/* Estilo de las checkboxes antes de ser marcadas*/
 .task input[type="checkbox"]:before{
     content: "";
     position: absolute;
@@ -92,10 +113,14 @@ body{
     top: 50%;
     left: 50%;
 }
+
+/* Estilo para las checkboxes cuando son marcadas*/
 .task input[type="checkbox"]:checked {
     background-color: #5a95ff;
     border-color: #5a95ff;
 }
+
+/* Estilo para los pseudo elementos de las checkbox */
 .task input[type="checkbox"]:checked:before {
     position: absolute;
     content: "\f00c";
@@ -104,11 +129,15 @@ body{
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
 }
+
+/* Estilo para el nombre del texto de la tarea*/
 .task span{
     font: 0.9em;
     font-weight: 400;
     word-break: break-all;
 }
+
+/* Estilos para los botones dentro de las tareas*/
 .task button{
     color: #ffffff;
     width: 100%;
@@ -118,19 +147,29 @@ body{
     cursor: pointer;
     outline: none;
 }
+
+/* Estilo para el boton de editar*/
 .edit {
     background-color: #5a95ff;
 }
+
+/* Estilo para el boton de eliminar*/
 .delete {
     background-color: #ff5c5c;
 }
+
+/* Estilo para el contador de tareas*/
 #pending-tasks span{
     color: #5a95ff;
 }
+
+/* Estilo para tareas completadas*/
 .completed{
     text-decoration: line-through;
     color: #a0a0a0;
 }
+
+/* Estilo para el mensaje de error*/
 #error{
     text-align: center;
     background-color: #ffffff;
