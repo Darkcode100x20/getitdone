@@ -19,7 +19,7 @@ const addTask = () => {
         return;
     }
 
-    const task = `<div class="task> 
+    const task = `<div class="task"> 
         <input type="checkbox" class="task-check">
         <span class="taskname">${taskName}</span>   
         <button class="edit"> <i class="fa-solid fa-pen-to-square"></i>
@@ -73,4 +73,11 @@ const addTask = () => {
     newTaskInput.value = "";
 };
 
-addBtn.addEventListener("click", addTask);
+addBtn.addEventListener("click", addTask); 
+
+window.onload = () => {
+    taskCount = 0;
+    displayCount(taskCount);
+    newTaskInput.value = "";
+
+}
